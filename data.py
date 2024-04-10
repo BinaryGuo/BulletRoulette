@@ -1,7 +1,7 @@
 # 此文件用于定义各种常量（必须）各种改动可在这里进行（比如路径）
 
 ASSESTS    = "assets/"
-DIR        = "/home/gqx/Python/Buckshot_Roulette/" #修改为此程序存放的路径  
+DIR        = "/home/gqx/codelab/Buckshot_Roulette/" #修改为此程序存放的路径  
 RED        = (255,  0,  0)
 WHITE      = (255,255,255)
 BACKGROUND = f"{ASSESTS}bg.png"

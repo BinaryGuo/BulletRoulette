@@ -14,7 +14,7 @@ from roles import *
 from data import *
 from sprites import Button
 # 以下是主程序
-chdir("/home/gqx/Python/Buckshot_Roulette/")
+chdir(DIR)
 print(getcwd())
 health = [2,4,6]
 buckshots = [ # 子弹（1代表实，0代表空）
@@ -38,6 +38,7 @@ buckshots = [ # 子弹（1代表实，0代表空）
 try:
     mode = int(input("请选择模式（窗口按1（游戏体验更好）,壳程序按2（更为稳定））:"))
     if mode == 1:
+        FPS = int(input("请设置帧率（如果设的太高您的计算机可能运行不了，区间：1～200）："))
         pygame.init()
         # 以下是一些关于pygame的一些常量声明
         # 以下是初始化
@@ -45,9 +46,9 @@ try:
         screen = pygame.display.set_mode((1400,850))
         pygame.display.set_caption("Buckshot Roulette")
         background = pygame.image.load(BACKGROUND)
-        backgroundmusic = pygame.mixer.Sound(BACKGROUNDMUSIC)
+        backgroundmusic = pygame.mixer.Sound(BGM)
         text = pygame.font.Font(FONT,50)
-        nametext = text.render("Enter name:",False,GREEN)
+        nametext = text.render("Enter name:",False,WHITE)
         nametextlocation = nametext.get_rect()
         nametextlocation.center = (700,100)
         buttons = []
