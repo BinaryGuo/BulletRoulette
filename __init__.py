@@ -39,15 +39,15 @@ def makeprop(beset,value,prop = []):
     for _ in range(value):
         rdm = random()
         if rdm <= 0.2: # 啤酒
-            prop = setprop(beset,1,prop)
+            prop = setprop(beset,"beer",prop)
         elif rdm <= 0.4: # 烟
-            prop = setprop(beset,2,prop)
+            prop = setprop(beset,"smoke",prop)
         elif rdm <= 0.6: # 手铐
-            prop = setprop(beset,3,prop)
+            prop = setprop(beset,"handcuff",prop)
         elif rdm <= 0.8: # 小刀
-            prop = setprop(beset,4,prop)
+            prop = setprop(beset,"knife",prop)
         else:
-            prop = setprop(beset,5,prop)
+            prop = setprop(beset,"magnifier",prop)
     return prop
 
 playerknife = False
@@ -187,7 +187,6 @@ try:
                 if not naming:
                     playerturn = dealerturn = False
                     drawingbuckshots = True
-                    
             if naming:
                 screen.blit(nametext,nametextlocation)
                 for i in buttons: 
