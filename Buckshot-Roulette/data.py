@@ -1,6 +1,6 @@
 # 此文件用于定义各种常量（必须）各种改动可在这里进行（比如路径）
 
-ASSESTS    = "assets/"
+ASSESTS    = "assets/" # 修改为存放图片背景音乐等素材的目录
 DIR        = "/home/gqx/codelab/Buckshot_Roulette/" #修改为此程序存放的路径  
 RED        = (255,  0,  0)
 WHITE      = (255,255,255)
@@ -26,3 +26,4 @@ KNIFE      = f"{ASSESTS}knife.png"
 PROPBOX    = f"{ASSESTS}propbox.png"
 BEER = f"{ASSESTS}beer.png"
 PILL       = f"{ASSESTS}pill.png"
+NONEPROP = f"{ASSESTS}noneprop.png"
