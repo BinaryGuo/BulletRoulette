@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+bulletroulette/__init__.py
+bulletroulette/data.py
+bulletroulette/roles.py
+bulletroulette/run.py
+bulletroulette/sprites.py
+bulletroulette.egg-info/PKG-INFO
+bulletroulette.egg-info/SOURCES.txt
+bulletroulette.egg-info/dependency_links.txt
+bulletroulette.egg-info/requires.txt
+bulletroulette.egg-info/top_level.txt
