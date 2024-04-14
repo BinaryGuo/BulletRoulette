@@ -1,4 +1,4 @@
-# 此文件用于定义角色类（必须）
+# 此文件用于定义角色类
 from random import random
 
 class Dealer: # 恶魔

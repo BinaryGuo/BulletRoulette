@@ -1,6 +1,6 @@
-# 此文件用于声明用于pygame的类（不必须，但使用窗口模式时需要）
+# 此文件用于声明用于pygame的类
 import pygame
-from data import *
+from bulletroulette.data import *
 
 class Button:
     def __init__(self,x,y,image,mode = 0):
