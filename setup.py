@@ -3,7 +3,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setuptools.setup(
     name="bulletroulette",  # 模块名称
-    version="1.0.3",  # 当前版本
+    version="1.0.4",  # 当前版本
     author="GQX",  # 作者
     author_email="kill114514251@outlook.com",  # 作者邮箱
     description="模仿steam游戏“恶魔轮盘”，目前没有提供开发接口（只能单纯玩）",  # 模块简介

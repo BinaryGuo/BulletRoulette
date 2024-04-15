@@ -41,11 +41,9 @@ bulletroulette/assets/W.png
 bulletroulette/assets/X.png
 bulletroulette/assets/Y.png
 bulletroulette/assets/Z.png
-bulletroulette/assets/__init__.py
 bulletroulette/assets/beer.png
 bulletroulette/assets/bg.png
 bulletroulette/assets/bgmsc.ogg
-bulletroulette/assets/binary.png
 bulletroulette/assets/blank.png
 bulletroulette/assets/blank.wav
 bulletroulette/assets/charge.png

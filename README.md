@@ -23,8 +23,8 @@
 
 ### debuging
 - BUG1 降低在高帧率下的高灵敏度问题
-- BUG2 增加获取屏幕尺寸功能
-- BUG3 兼容windows系统
+- BUG2 增加获取屏幕尺寸功能 
+- BUG3 兼容windows系统 # 已解决（1.0.4）
 - BUG4 IDLE无法自动关闭
 
 ## 程序说明

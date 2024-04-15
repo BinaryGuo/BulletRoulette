@@ -6,17 +6,14 @@ cannotuseGUI = False
 from random import shuffle
 from time import sleep
 import pygame
-from os import chdir
+from os import chdir,path
 from traceback import print_exc
 # 模块导入
 from bulletroulette.roles import *
 from bulletroulette.data import *
 from bulletroulette.sprites import *
 # 以下是主程序
-file = __file__
-while file[-1] != "/":
-    file = file[:-1]
-chdir(file)
+chdir(path.dirname(__file__))
 health = [2,4,6]
 buckshots = [ # 子弹（1代表实，0代表空）
         [
