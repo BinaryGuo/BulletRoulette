@@ -2,7 +2,6 @@
 __version__ = "1.0" # 版本说明（没什么用）
 
 # 外部导入
-cannotuseGUI = False
 from random import shuffle
 from time import sleep
 import pygame
@@ -35,10 +34,7 @@ buckshots = [ # 子弹（1代表实，0代表空）
     ]
 def run():
     try:
-        if cannotuseGUI:
-            mode = 2
-        else:
-            mode = int(input("请选择模式（壳程序按0（更为稳定）,窗口按1（游戏体验更好））:"))
+        mode = int(input("请选择模式（壳程序按0（更为稳定）,窗口按1（游戏体验更好））:"))
         if mode:
             FPS = int(input("请设置帧率（如果设的太高您的计算机可能运行不了，区间：1～200）："))
             assert FPS >= 1 and FPS <= 200,"FPS out of range"
