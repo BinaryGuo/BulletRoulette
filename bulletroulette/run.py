@@ -32,7 +32,7 @@ buckshots = [ # 子弹（1代表实，0代表空）
             [1,1,1,1,0,0,0,0]
         ]
     ]
-def run():
+def run(dev:int = False):
     try:
         mode = int(input("请选择模式（壳程序按0（更为稳定）,窗口按1（游戏体验更好））:"))
         if mode:
@@ -43,7 +43,7 @@ def run():
             # 以下是初始化
             clock = pygame.time.Clock() # 初始化时钟
             screen = pygame.display.set_mode((1400,850)) # 屏幕（窗口）初始化
-            pygame.display.set_caption("Buckshot Roulette") # 设置标题
+            pygame.display.set_caption("Bullet Roulette") # 设置标题
             background = pygame.image.load(BACKGROUND) # 加载背景图
             gunimage = pygame.image.load(GUN) # 加载霰弹枪图片
             charge = pygame.image.load(CHARGE) # 加载血量图片
@@ -282,8 +282,9 @@ def run():
         print("抱歉，我们检测到了一个错误，这可能不是您造成的，但您无法继续进行游戏了")
         print("错误信息：")
         print_exc()
-    print("游戏结束!")
-    print("感谢您的游玩!")
-    print("名称:Buckshot Roulette（恶魔轮盘赌）")
-    print("版本：1.0")
-    print("LevoLet Inc.")
+    finally:
+        if not dev:
+            print("游戏结束!")
+            print("感谢您的游玩!")
+            print("名称:Bullet Roulette")
+            print("版本：1.0")

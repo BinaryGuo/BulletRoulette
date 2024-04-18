@@ -31,20 +31,23 @@ def setprop(beset,value,prop):
     prop.append(value)
     return prop
 
-def makeprop(beset,value,prop = []):
+def makeprop(beset,value):
+    print("value",value)
+    prp = []
     for _ in range(value):
         rdm = random()
         if rdm <= 0.2: # 啤酒
-            prop = setprop(beset,"beer",prop)
+            prp = setprop(beset,"beer",prp)
         elif rdm <= 0.4: # 烟
-            prop = setprop(beset,"smoke",prop)
+            prp = setprop(beset,"smoke",prp)
         elif rdm <= 0.6: # 手铐
-            prop = setprop(beset,"handcuff",prop)
+            prp = setprop(beset,"handcuff",prp)
         elif rdm <= 0.8: # 小刀
-            prop = setprop(beset,"knife",prop)
+            prp = setprop(beset,"knife",prp)
         else:
-            prop = setprop(beset,"magnifier",prop)
-    return prop
+            prp = setprop(beset,"magnifier",prp)
+        print("prop",prp)
+    return prp
 
 def run():
     playerknife = False
@@ -175,9 +178,11 @@ def run():
                     if turn[0] < 3:
                         buckshot = buckshots[turn[0]][turn[1]]
                         turn[1] += 1
+                        print("wc",buckshot)
                         if turn[0]:
                             makeprop(dealer,health[turn[0] - 1])
-                            tmppropplayer = makeprop(player,health[turn[0] - 1])
+                            tmppropplayer = makeprop(player,health[turn[0] - 1]) #TODO
+                            print("tmp",tmppropplayer)
                     if not naming:
                         playerturn = dealerturn = False
                         drawingbuckshots = True
@@ -280,9 +285,9 @@ def run():
                             screen.blit(blank,buckshotlocation)
                     for en,p in enumerate(propplayer):
                         if p:
-                            print(p,propboxlocation[en])
-                            screen.blit(eval(p),propboxlocation[en])
+                            screen.blit(eval(p),proplocation[en])
                     if tmppropplayer:
+                        print(tmppropplayer)
                         first = False
                         if selectingprop:
                             if propboxbutton.run(screen):
@@ -491,6 +496,5 @@ def run():
     print("游戏结束!")
     print("感谢您的游玩!")
     print("名称:Buckshot Roulette（恶魔轮盘赌）")
-    print("版本：1.0")
-    print("LevoLet Inc.")
+    print("版本：1.1")
 run()
