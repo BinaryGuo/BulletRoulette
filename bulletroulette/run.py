@@ -1,38 +1,83 @@
 # 主程序（没错，运行它！）
-__version__ = "1.0" # 版本说明（没什么用）
+__version__ = "1.1" # 版本说明（没什么用）
 
 # 外部导入
+cannotuseGUI = False
 from random import shuffle
 from time import sleep
 import pygame
-from os import chdir,path
 from traceback import print_exc
+from os import chdir,path
+from copy import copy
 # 模块导入
 from bulletroulette.roles import *
 from bulletroulette.data import *
 from bulletroulette.sprites import *
-# 以下是主程序
 chdir(path.dirname(__file__))
-health = [2,4,6]
-buckshots = [ # 子弹（1代表实，0代表空）
-        [
-            [1,0,0],
-            [1,1,0,0]
-        ],
-        [
-            [1,0],
-            [1,1,0,0,0],
-            [1,1,1,0,0,0],
-            [1,1,1,1,0,0,0,0]
-        ],
-        [
-            [1,1,1,1,1,0,0,0],
-            [1,1,1,1,0,0,0,0],
-            [1,1,1,0],
-            [1,1,1,1,0,0,0,0]
+with open("../README.md", "r", encoding="utf-8") as fh:
+    readmetxt = fh.read()
+with open("../LICENSE", "r", encoding="utf-8") as fh:
+    licensetxt = fh.read()
+# 以下是主程序
+def printprop(prop):
+    for p in prop:
+        if p == 1:
+            print("啤酒")
+        elif p == 2:
+            print("烟")
+        elif p == 3:
+            print("手铐")
+        elif p == 4:
+            print("小刀")
+        else:
+            print("放大镜")
+
+def setprop(beset,value,prop):
+    beset.setprop(value)
+    prop.append(value)
+    return prop
+
+def makeprop(beset,value):
+    print("value",value)
+    prp = []
+    for _ in range(value):
+        rdm = random()
+        if rdm <= 0.2: # 啤酒
+            prp = setprop(beset,"beer",prp)
+        elif rdm <= 0.4: # 烟
+            prp = setprop(beset,"smoke",prp)
+        elif rdm <= 0.6: # 手铐
+            prp = setprop(beset,"handcuff",prp)
+        elif rdm <= 0.8: # 小刀
+            prp = setprop(beset,"knife",prp)
+        else:
+            prp = setprop(beset,"magnifier",prp)
+        print("prop",prp)
+    return prp
+
+def run():
+    playerknife = False
+    dealerknife = False
+    health = (2,4,6)
+    buckshots = [ # 子弹（1代表实，0代表空）
+            [
+                [1,0,0],
+                [1,1,0,0]
+            ],
+            [
+                [1,0],
+                [1,1,0,0,0],
+                [1,1,1,0,0,0],
+                [1,1,1,1,0,0,0,0]
+            ],
+            [
+                [1,1,1,1,1,0,0,0],
+                [1,1,1,1,0,0,0,0],
+                [1,1,1,1,1,1,0,0],
+                [1,1,1,1,0,0,0,0],
+                [1,1,0,0,0,0,0,0]
+            ]
         ]
-    ]
-def run(dev:int = False):
     try:
         mode = int(input("请选择模式（壳程序按0（更为稳定）,窗口按1（游戏体验更好））:"))
         if mode:
@@ -43,7 +88,7 @@ def run(dev:int = False):
             # 以下是初始化
             clock = pygame.time.Clock() # 初始化时钟
             screen = pygame.display.set_mode((1400,850)) # 屏幕（窗口）初始化
-            pygame.display.set_caption("Bullet Roulette") # 设置标题
+            pygame.display.set_caption("Buckshot Roulette") # 设置标题
             background = pygame.image.load(BACKGROUND) # 加载背景图
             gunimage = pygame.image.load(GUN) # 加载霰弹枪图片
             charge = pygame.image.load(CHARGE) # 加载血量图片
@@ -51,6 +96,28 @@ def run(dev:int = False):
             liveround = pygame.image.load(LIVEROUND) # 加载实弹图片
             dealershootself = pygame.image.load(SHOOTSELF) # 加载恶魔射击自己时的图片
             dealershootplayer = pygame.image.load(SHOOTPLAYER) # 加载恶魔射击玩家时的图片
+            smoke = pygame.image.load(SMOKE)
+            magnifier = pygame.image.load(MAGNIFIER)
+            knife = pygame.image.load(KNIFE)
+            noneprop = copy(knife)
+            handcuff = pygame.image.load(HANDCUFF)
+            beer = pygame.image.load(BEER)
+            propbox = pygame.image.load(PROPBOX)
+            usesmoke = pygame.image.load(USESMOKE)
+            usemagnifier = pygame.image.load(USEMAGNIFIER)
+            usehandcuff = pygame.image.load(USEHANDCUFF)
+            usebeer = pygame.image.load(USEBEER)
+            useknife = pygame.image.load(USEKNIFE)
+            propboxbutton = Button(700,700,propbox,1)
+            noneprop.set_alpha(0)
+            proplocation = []
+            propbuttons = []
+            for i in range(8):
+                proplocation.append(pygame.Rect((100*(i+1),425,50,100)))
+            for i in range(8):
+                propbuttons.append(Button(100*(i+1),425,noneprop))
+            propboxlocation = propbox.get_rect()
+            propboxlocation.center = (700,700)
             buckshotlocation = blank.get_rect() # 获取子弹显示位置
             shootlocation = dealershootself.get_rect() # 获取恶魔射击时的位置
             chargelocation = charge.get_rect() # 获取血量显示位置
@@ -63,25 +130,32 @@ def run(dev:int = False):
             shootlocation.center = (700,300) # 设置恶魔射击时的位置
             text = pygame.font.Font(FONT,75) # 设定字体
             nametext = text.render("Enter name:",False,WHITE) # 用字体生成文字
-            playerlose = text.render("dealer win!",False,WHITE) # 用字体生成文字
+            playerlose = text.render("Dealer win!",False,WHITE) # 用字体生成文字
             loseorwinlocation = playerlose.get_rect()
             loseorwinlocation.center = (700,425)
             nametextlocation = nametext.get_rect()
             nametextlocation.center = (700,100)
             shootdealer = Button(700,75,text.render("DEALER",False,WHITE),1)
-            dealerturntext = text.render("dealer's turn",False,WHITE)
+            dealerturntext = text.render("Dealer's turn",False,WHITE)
+            buckshottext = text.render("Bullets:",False,WHITE)
+            buckshottextlocation = buckshottext.get_rect()
+            buckshottextlocation.topleft = (100,75)
             buttons = []
             name = ""
             for i in range(26):buttons.append(Button(50*(i+1),700,pygame.image.load(f"assets/{LETTERS[i]}.png")))
             delete = Button(350,760,pygame.image.load(DELETE))
             enter = Button(800,760,pygame.image.load(ENTER))
             # 以下是一些控制变量
+            first = True
             naming = True # 正在命名
             playerturn = False # 玩家回合
             dealerturn = False # 恶魔回合
             choosing = False
             drawingbuckshots = False
-            wasd = int(0)
+            selectingprop = True
+            tmppropplayer = []
+            propplayer = [None,None,None,None,None,None,None,None]
+            buckshot = []
             turn = [0,0]
             dealer = Dealer(2)
             player = Player(2,name)
@@ -100,20 +174,26 @@ def run(dev:int = False):
                 if not dealer.gethealth():
                     turn[1] = 0
                     turn[0] += 1
-                    del buckshot
+                    buckshot = []
                     screen.blit(playerwin,loseorwinlocation)
                     pygame.display.update()
                     sleep(3)
+                    screen.blit(background,(0,0))
+                    pygame.display.update()
                     if turn[0] == 3:
                         raise SystemExit
                     else:
                         dealer = Dealer(health[turn[0]])
                         player = Player(health[turn[0]],name)
-                try:buckshot[0]
-                except:
+                if not len(buckshot):
                     if turn[0] < 3:
                         buckshot = buckshots[turn[0]][turn[1]]
                         turn[1] += 1
+                        print("wc",buckshot)
+                        if turn[0]:
+                            makeprop(dealer,health[turn[0] - 1])
+                            tmppropplayer = makeprop(player,health[turn[0] - 1])
+                            print("tmp",tmppropplayer)
                     if not naming:
                         playerturn = dealerturn = False
                         drawingbuckshots = True
@@ -141,6 +221,10 @@ def run(dev:int = False):
                     for i in range(dealer.gethealth()):
                         chargelocation.topleft = (0,0+50*i)
                         screen.blit(charge,chargelocation)
+                    for en,i in enumerate(propplayer):
+                        if i:
+                            if propbuttons[en].run():
+                                screen.blit(eval("using" + i))
                     if gun.run(screen):
                         playerturn = False
                         choosing = True
@@ -206,17 +290,40 @@ def run(dev:int = False):
                         del buckshot[0]
                         sleep(2)
                 elif drawingbuckshots:
+                    pygame.draw.rect(screen,RED,(0,0,1400,250))
+                    screen.blit(buckshottext,buckshottextlocation)
                     for en,b in enumerate(buckshot):
-                        buckshotlocation.topleft = (400+80 * en,400)
+                        buckshotlocation.topleft = (600+80 * en,75)
                         if b:
                             screen.blit(liveround,buckshotlocation)
                         else:
                             screen.blit(blank,buckshotlocation)
-                    pygame.display.update()
-                    sleep(2)
-                    drawingbuckshots = False
-                    playerturn = True
-                    shuffle(buckshot)
+                    for en,p in enumerate(propplayer):
+                        if p:
+                            screen.blit(eval(p),proplocation[en])
+                    if tmppropplayer:
+                        screen.blit(propbox,propboxlocation)
+                        print(tmppropplayer)
+                        first = False
+                        if selectingprop:
+                            if propboxbutton.run(screen):
+                                selectingprop = False
+                        else:
+                            print("in")
+                            screen.blit(eval(tmppropplayer[0]),propboxlocation)
+                            for en,p in enumerate(propbuttons):
+                                if not propplayer[en] and p.run(screen):
+                                    selectingprop = True
+                                    propplayer[en] = tmppropplayer[0]
+                                    del tmppropplayer[0]
+                    else:
+                        if first:
+                            pygame.display.update()
+                            sleep(2)
+                        else:
+                            first = True
+                        drawingbuckshots = False
+                        playerturn = True
                 else:
                     raise TypeError("Nothing is Running!!!")
                 pygame.display.update()
@@ -224,67 +331,193 @@ def run(dev:int = False):
         else:
             name = input("你的名字：") # 输入名字
             for j in range(3): # 三个回合
+                brk = False
                 dealer = Dealer(health[j]) # 恶魔初始化
                 player = Player(health[j],name) # 玩家初始化
                 for i in range(len(buckshots[j])): # 每一小轮
+                    if brk:
+                        brk = False
+                        break
                     buckshot = buckshots[j][i] # 初始化本轮子弹
                     buckshotcount = [0,0] #子弹计数
                     for k in buckshot: # 实弹
                         if k:buckshotcount[0]+=1
                     for k in buckshot: # 空弹
                         if k == 0:buckshotcount[1]+=1
-                    next = 0 # 下一轮
                     shuffle(buckshot) # 打乱子弹顺序
                     print(f"{buckshotcount[0]}发实弹，{buckshotcount[1]}发空弹") # 打印子弹提示
-                    for i in range(len(buckshot)): #
+                    if j:
+                        for k in range(health[j-1]):
+                            rdm = random()
+                            if rdm <= 0.2: # 啤酒
+                                dealer.setprop(1)
+                            elif rdm <= 0.4: # 烟
+                                dealer.setprop(2)
+                            elif rdm <= 0.6: # 手铐
+                                dealer.setprop(3)
+                            elif rdm <= 0.8: # 小刀
+                                dealer.setprop(4)
+                            else:
+                                dealer.setprop(5)
+                        for k in range(health[j-1]):
+                            rdm = random()
+                            if rdm <= 0.2: # 啤酒
+                                player.setprop(1)
+                            elif rdm <= 0.4: # 烟
+                                player.setprop(2)
+                            elif rdm <= 0.6: # 手铐
+                                player.setprop(3)
+                            elif rdm <= 0.8: # 小刀
+                                player.setprop(4)
+                            else:
+                                player.setprop(5)
+                    print("恶魔的道具：")
+                    printprop(dealer.getprop())
+                    print("你的道具：")
+                    printprop(player.getprop())
+                    next = 0 # 下一轮
+                    brk = False
+                    ctn = False
+                    ctnl = False
+                    playercuff = False
+                    dealercuff = False
+                    for b in buckshot:
                         print(f"恶魔血量:{dealer.gethealth()} {name}的血量:{player.gethealth()}")
                         if next == 0:
+                            if j:
+                                while True:
+                                    useprop = player.useprop()
+                                    if useprop == 0:
+                                        break
+                                    elif useprop == 1: # 啤酒
+                                        print("正在使用：啤酒")
+                                        if b:
+                                            print("下一发是：实弹")
+                                        else:
+                                            print("下一发是：空弹")
+                                        ctnl = True
+                                        break
+                                    elif useprop == 2: # 烟
+                                        print("正在使用：烟")
+                                        player.smoke()
+                                    elif useprop == 3:
+                                        print("正在使用：手铐")
+                                        dealercuff = True
+                                    elif useprop == 4:
+                                        print("正在使用：小刀")
+                                        playerknife = True
+                                    else:
+                                        print("正在使用：放大镜")
+                                        if buckshot[0]:
+                                            print("下一发是：实弹")
+                                        else:
+                                            print("下一发是：空弹")
+                                if ctnl:
+                                    ctnl = False
+                                    continue
                             if player.shoot():
-                                if buckshot[i]:
+                                if b:
                                     print("砰！！！")
                                     dealer.hurt() # 受伤
+                                    if playerknife:
+                                        dealer.hurt() # 受伤
                                 else:
                                     print("咔......")
-                                next = 1
+                                if not dealercuff:next = 1
+                                else:dealercuff = False
                             else:
-                                if buckshot[i]:
+                                if b:
                                     print("砰！！！")
                                     player.hurt()
-                                    next = 1
+                                    if playerknife:
+                                        player.hurt()
+                                    if not dealercuff:next = 1
+                                    else:dealercuff = False
                                 else:
                                     print("咔......")
                         else:
-                            if dealer.shoot():
+                            if j:
+                                while True:
+                                    useprop = dealer.useprop()
+                                    if useprop == 0:
+                                        break
+                                    elif useprop == 1: # 啤酒
+                                        print("恶魔正在使用：啤酒")
+                                        if b:
+                                            print("下一发是：实弹")
+                                        else:
+                                            print("下一发是：空弹")
+                                        ctnl = True
+                                        break
+                                    elif useprop == 2: # 烟
+                                        print("恶魔正在使用：烟")
+                                        dealer.smoke()
+                                    elif useprop == 3:
+                                        print("恶魔正在使用：手铐")
+                                        playercuff = True
+                                    elif useprop == 4:
+                                        print("恶魔正在使用：小刀")
+                                        dealerknife = True
+                                    else:
+                                        print("正在使用：放大镜") # TODO
+                                        print("恶魔:非常有趣。。。")
+                                if ctnl:
+                                    ctnl = False
+                                    continue
+                            if dealerknife:
                                 print(f"恶魔选择向{name}开枪！！！")
-                                if buckshot[i]:
+                                if b:
                                     print("砰！！！")
+                                    player.hurt()
                                     player.hurt()
                                 else:
                                     print("咔......")
-                                next = 0
+                                if not playercuff:next = 0
+                                else:playercuff = False
+                                dealerknife = False
                             else:
-                                print("恶魔选择向自己开枪......")
-                                if buckshot[i]:
-                                    print("砰！！！")
-                                    dealer.hurt()
-                                    next = 0
+                                if dealer.shoot():
+                                    print(f"恶魔选择向{name}开枪！！！")
+                                    if b:
+                                        print("砰！！！")
+                                        player.hurt()
+                                    else:
+                                        print("咔......")
+                                    if not playercuff:next = 0
+                                    else:playercuff = False
                                 else:
-                                    print("咔......")
-                        if dealer.gethealth() == 0 or player.gethealth() == 0:exit()
-                        sleep(1.5)
+                                    print("恶魔选择向自己开枪......")
+                                    if b:
+                                        print("砰！！！")
+                                        dealer.hurt()
+                                        if not playercuff:next = 0
+                                        else:playercuff = False
+                                    else:
+                                        print("咔......")
+                        playerknife = False
+                        sleep(1)
+                        if dealer.gethealth() == 0:
+                            brk = True
+                            break
                 del dealer
                 del player
     except KeyboardInterrupt:
         print("\n检测到^C")
         exit()
-    except SystemExit:pass
+    except SystemExit:
+        pygame.quit
+        exit()
     except:
         print("抱歉，我们检测到了一个错误，这可能不是您造成的，但您无法继续进行游戏了")
         print("错误信息：")
         print_exc()
-    finally:
-        if not dev:
-            print("游戏结束!")
-            print("感谢您的游玩!")
-            print("名称:Bullet Roulette")
-            print("版本：1.0")
+    print("游戏结束!")
+    print("感谢您的游玩!")
+
+def dev():
+    def readme():print(readmetxt)
+    def license():print(licensetxt)
+    while True:
+        exec(input("(roulette)>>> "))
+
+run()
