@@ -1,9 +1,9 @@
-# Buckshot Roulette 恶魔轮盘赌
+# Bullet Roulette 说明
 
 ## 项目说明
 - 此项目旨在将游戏“恶魔轮盘”的玩法移植到Python3.x上
-- github：https://github.com/BinaryGuo/Buckshot_Roulette/
-- 问题反馈：https://github.com/BinaryGuo/Buckshot_Roulette/issues
+- github：https://github.com/BinaryGuo/Bullet_Roulette/
+- 问题反馈：https://github.com/BinaryGuo/Bullet_Roulette/issues
 - 联系邮箱（GQX）：kill114514251@outlook.com
 - testPyPI：同名
 
@@ -39,6 +39,9 @@
 
 ### 1.4（计划）
 - 增加远程连接
+
+### 1.5（计划）
+- 增加多人模式
 
 ### 问题修复
 - BUG1 降低在高帧率下的高灵敏度问题

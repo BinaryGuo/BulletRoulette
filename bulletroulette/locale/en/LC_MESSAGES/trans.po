@@ -1,0 +1,83 @@
+msgid "啤酒"
+msgstr "beer"
+
+msgid "烟"
+msgstr "smoke"
+
+msgid "手铐"
+msgstr "handcuff"
+
+msgid "放大镜"
+msgstr "magnifier"
+
+msgid "小刀"
+msgstr "knife"
+
+msgid "请选择模式（壳程序按0,窗口按1）："
+msgstr "Please select the mode (shell program press 0, window press 1):"
+
+msgid "请设置帧率（区间：1～20）："
+msgstr "Please set the frame rate (range: 1-20):"
+
+msgid "输入名字："
+msgstr "Enter name:"
+
+msgid "恶魔赢了！"
+msgstr "Dealer WIN!"
+
+msgid "恶魔"
+msgstr "DEALER"
+
+msgid "恶魔的回合"
+msgstr "Dealer's turn"
+
+msgid "子弹："
+msgstr "Bullets:"
+
+msgid "发实弹"
+msgstr " live round"
+
+msgid "发空弹"
+msgstr " blank"
+
+msgid "恶魔的道具："
+msgstr "Dealer's prop："
+
+msgid "你的道具："
+msgstr "Your prop："
+
+msgid "恶魔血量："
+msgstr "Dealer's health:"
+
+msgid "的血量："
+msgstr "'s health"
+
+msgid "正在使用："
+msgstr "using:"
+
+msgid "下一发是："
+msgstr "Next is:"
+
+msgid "空弹"
+msgstr "blank"
+
+msgid "实弹"
+msgstr "live round"
+
+msgid "砰！！！"
+msgstr "BOOM!!!"
+
+msgid "咔......"
+msgstr "KA......"
+
+msgid "恶魔:非常有趣。。。"
+msgstr "Dealer:Very Interesting..."
+
+msgid "恶魔选择向你开枪！！！"
+msgstr "Dealer is shooting you!!!"
+
+msgid "恶魔选择向自己开枪......"
+msgstr "Dealer is shooting self"
+
+msgid "检测到"
+msgstr "Detected "

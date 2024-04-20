@@ -9,7 +9,7 @@ setuptools.setup(
     description="模仿steam游戏“恶魔轮盘”，目前没有提供开发接口（只能单纯玩）",  # 模块简介
     long_description=long_description,  # 模块详细介绍
     long_description_content_type="text/markdown",  # 模块详细介绍格式
-    url="https://github.com/BinaryGuo/Buckshot_Roulette",  # 模块github地址
+    url="https://github.com/BinaryGuo/Bullet_Roulette",  # 模块github地址
     packages=setuptools.find_packages(),  # 自动找到项目中导入的模块
     include_package_data=True,
     package_data={
