@@ -1,4 +1,4 @@
-# 此文件用于声明用于pygame的类
+# 此文件用于声明类
 import pygame
 from bulletroulette.data import *
 from random import random
@@ -33,6 +33,8 @@ class Dealer: # 恶魔
         self.__tophealth = health
         self.__health = health
         self.__prop = prop
+        self.__value = None
+        self.__bullet = []
 
     def gethealth(self) -> int:
         return self.__health
@@ -48,8 +50,25 @@ class Dealer: # 恶魔
         return self.__prop
 
     def shoot(self) -> int: # 开枪
+        if len(self.__bullet) == 1:return self.__bullet[0]
+        del self.__bullet[0]
+        print("shoot value",self.__value)
+        if self.__value != None:
+            self.__value = None
+            print("using value")
+            return self.__value
         if random() >= 0.5:return 1 # 1：向玩家开枪，0：向自己开枪
         else:return 0
+
+    def noprop(self,rm = True) -> None:
+        if rm:
+            self.__prop = []
+        else:
+            while True:
+                if len(self.__prop) > 8:
+                    self.__prop.pop()
+                    continue
+                break
 
     def useprop(self) -> int: # 使用道具
         '''
@@ -60,34 +79,45 @@ class Dealer: # 恶魔
             0：不用）
         ）
         '''
+        print("class prop",self.__prop)
+        if not self.__prop:
+            return 0
         while True:
             rdm = random()
             if rdm <= 0.19: # 啤酒
-                if 1 in self.__prop:
-                    del self.__prop[self.__prop.index(1)]
+                if "beer" in self.__prop and len(self.__bullet) != 1 and self.__value != 1:
+                    del self.__prop[self.__prop.index("beer")]
                     return 1
             elif rdm <= 0.38: # 烟
-                if 2 in self.__prop:
-                    del self.__prop[self.__prop.index(2)]
+                if "smoke" in self.__prop and self.__health < self.__tophealth:
+                    del self.__prop[self.__prop.index("smoke")]
                     return 2
             elif rdm <= 0.57: # 手铐
-                if 3 in self.__prop:
-                    del self.__prop[self.__prop.index(3)]
+                if "handcuff" in self.__prop and len(self.__bullet) != 1:
+                    del self.__prop[self.__prop.index("handcuff")]
                     return 3
             elif rdm <= 0.76: # 小刀
-                if 4 in self.__prop:
-                    del self.__prop[self.__prop.index(4)]
+                if "knife" in self.__prop and self.__value == 1:
+                    del self.__prop[self.__prop.index("knife")]
                     return 4
             elif rdm <= 0.95: # 放大镜
-                if 5 in self.__prop:
-                    del self.__prop[self.__prop.index(5)]
+                if "magnifier" in self.__prop and len(self.__bullet) != 1 and self.__value == None:
+                    del self.__prop[self.__prop.index("magnifier")]
                     return 5
-            else:return 0
+            else:
+                return 0
+
+    def memory(self,value):
+        self.__value = value
+        print("value",value)
+
+    def setbullet(self,bullet):
+        self.__bullet = bullet
 
     def hurt(self):
         self.__health -= 1
         print("恶魔:啊！！！")
-        if self.__health == 0: 
+        if self.__health == 0:
             print("恶魔死了！！！")
 
 class Player: # 人（玩家）
