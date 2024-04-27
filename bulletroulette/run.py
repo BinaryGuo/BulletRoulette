@@ -11,6 +11,7 @@ from traceback import print_exc
 from copy import copy
 from os import chdir
 from os.path import dirname
+from bdb import BdbQuit
 # 模块导入
 from bulletroulette.data import *
 from bulletroulette.sprites import *
@@ -199,7 +200,7 @@ def run():
                     sleep(2) # 停留2秒
                     raise SystemExit # 退出
                 if not dealer.gethealth(): # 恶魔死亡
-                    turn[1] = 0 # 初始化小轮
+                    turn[1] = -1 # 初始化小轮
                     turn[0] += 1 # 大轮+1
                     propplayer = [None,None,None,None,None,None,None,None]
                     propdealer = []
@@ -213,9 +214,9 @@ def run():
                     else:
                         dealer = Dealer(health[turn[0]]) # 初始化Dealer类
                         player = Player(health[turn[0]],name) # 初始化Player类
-                if not len(buckshot):
-                    buckshot = buckshots[turn[0]][turn[1]]
+                if not buckshot:
                     turn[1] += 1
+                    buckshot = buckshots[turn[0]][turn[1]]
                     if turn[0]:
                         propdealer.extend(makeprop(dealer,health[turn[0] - 1]))
                         dealer.noprop(False)
@@ -225,6 +226,8 @@ def run():
                                 continue
                             break
                         tmppropplayer = makeprop(player,health[turn[0] - 1])
+                        if turn[0] == 2:
+                            breakpoint()
                     if not naming:
                         playerturn = dealerturn = False
                         drawingbullets = True
@@ -279,7 +282,7 @@ def run():
                                         screen.blit(seeblank,seelocation)
                                 propplayer[en] = None
                                 pygame.display.update()
-                                sleep(1.5)
+                                sleep(2)
                     if gun.run(screen):
                         playerturn = False
                         choosing = True
@@ -296,7 +299,7 @@ def run():
                     for en,i in enumerate(propplayer):
                         if i:screen.blit(eval(i),proplocation[en])
                     pygame.display.update()
-                    sleep(0.5)
+                    sleep(1)
                     while True:
                         print("prop",propdealer)
                         useprop = dealer.useprop()
@@ -327,7 +330,7 @@ def run():
                             screen.blit(interestingtext,interestingtextlocation)
                         propdealer = dealer.getprop()
                         pygame.display.update()
-                        sleep(1.5)
+                        sleep(2)
                         screen.blit(background,(0,0))
                         screen.blit(dealerturntext,dealerturntextlocation)
                         for i in range(player.gethealth()):
@@ -341,7 +344,7 @@ def run():
                         for en,i in enumerate(propplayer):
                             if i:screen.blit(eval(i),proplocation[en])
                         pygame.display.update()
-                        sleep(0.5)
+                        sleep(1)
                     if dealer.shoot() == 0:
                         screen.blit(shootself,shootlocation)
                         if buckshot[0]:

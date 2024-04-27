@@ -61,6 +61,7 @@ class Dealer: # 恶魔
         else:return 0
 
     def noprop(self,rm = True) -> None:
+        print("before noprop",self.__prop)
         if rm:
             self.__prop = []
         else:
@@ -69,6 +70,7 @@ class Dealer: # 恶魔
                     self.__prop.pop()
                     continue
                 break
+        print("noproped",self.__prop)
 
     def useprop(self) -> int: # 使用道具
         '''

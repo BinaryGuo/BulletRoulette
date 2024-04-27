@@ -1,9 +1,12 @@
 # Bullet Roulette 说明
 
-## 项目说明
+## 项目名称
+- Bullet Roulette
+
+## 项目信息
 - 此项目旨在将游戏“恶魔轮盘”的玩法移植到Python3.x上
 - github：https://github.com/BinaryGuo/Bullet_Roulette/
-- 问题反馈：https://github.com/BinaryGuo/Bullet_Roulette/issues
+- 问题反馈：https://github.com/BinaryGuo/Bullet_Roulette/issues/
 - 联系邮箱（GQX）：kill114514251@outlook.com
 - testPyPI：同名
 
@@ -11,15 +14,13 @@
 - 1.1.1
 
 ## 开发环境
+
+### 操作系统
 - Ubuntu linux 22.04
 - Python 3.10.12
 - Pygame 2.5.2
 
 ## 改动说明
-
-### 0.1（测试版，未发布）
-- 使用类初步实现了游戏
-- 可玩性不高
 
 ### 1.0（上个版本）
 - 增加两个回合
@@ -42,16 +43,12 @@
 ### 1.5（计划）
 - 增加多人模式
 
-### 问题修复
-- BUG1 降低在高帧率下的高灵敏度问题
-- BUG2 增加获取屏幕尺寸功能 
-- BUG3 兼容windows系统 # 已解决（1.0.4）
-- BUG4 IDLE无法自动关闭 # 已解决（1.1.1）
-- BUG5 shuffle,make prop beset 复制
-- BUG6 道具摆放位置
-- METHOD2 血量
+### 修复中BUG
+- BUG1 在高帧率下的高灵敏度
+- BUG2 增加获取屏幕尺寸功能
+- METHOD1 打出子弹时显示子弹类型
 
-## 程序说明
+## 项目说明
 - 你可以看到在每个.py文件开头简短的说明
 ### 安装方法
 在shell(Terminal(Mac/Linux)或cmd(Windows))
@@ -129,7 +126,5 @@
 - 言邵阳（真名）
 - 陈晨（真名）
 
-### 开发人员
-
-# 本README遵循GQX的STD-1格式
-- ![STD]
+## 格式规范
+- GQXstd-readme 1.0
