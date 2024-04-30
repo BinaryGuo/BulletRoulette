@@ -1,6 +1,4 @@
-# 主程序（没错，运行它！）
-__version__ = "1.1" # 版本说明（没什么用）
-
+# 主程序
 # 外部导入
 from locale import getdefaultlocale as lcl,setlocale as stlcl,LC_ALL
 from gettext import translation
@@ -11,10 +9,11 @@ from traceback import print_exc
 from copy import copy
 from os import chdir
 from os.path import dirname
-from bdb import BdbQuit
+from sys import path
+path.append(dirname(__file__))
 # 模块导入
-from bulletroulette.data import *
-from bulletroulette.sprites import *
+from data import *
+from sprites import *
 
 chdir(dirname(__file__))
 stlcl(LC_ALL,"")
@@ -26,18 +25,18 @@ with open("../README.md", "r", encoding="utf-8") as fh:
 with open("../LICENSE", "r", encoding="utf-8") as fh:
     licensetxt = fh.read()
 # 以下是主程序
-#def printprop(prop):
- #   for p in prop:
-  #      if p == 1:
-   #         print(_("啤酒"))
-    #    elif p == 2:
-     #       print(_("烟"))
-      #  elif p == 3:
-       #     print(_("手铐"))
-        #elif p == 4:
-         #   print(_("小刀"))
-        #else:
-         #   print(_("放大镜"))
+def printprop(prop):
+    for p in prop:
+        if p == "beer":
+            print(_("啤酒"))
+        elif p == "smoke":
+            print(_("烟"))
+        elif p == "handcuff":
+            print(_("手铐"))
+        elif p == "knife":
+            print(_("小刀"))
+        else:
+            print(_("放大镜"))
 
 def setprop(beset,value,prop):
     beset.setprop(value)
@@ -200,11 +199,10 @@ def run():
                     sleep(2) # 停留2秒
                     raise SystemExit # 退出
                 if not dealer.gethealth(): # 恶魔死亡
-                    turn[1] = -1 # 初始化小轮
+                    turn[1] = 0 # 初始化小轮
                     turn[0] += 1 # 大轮+1
                     propplayer = [None,None,None,None,None,None,None,None]
                     propdealer = []
-                    dealer.noprop()
                     buckshot = [] # 初始化子弹
                     screen.blit(playerwin,loseorwinlocation) # 打印恶魔死亡提示
                     pygame.display.update() # 更新画面
@@ -214,11 +212,13 @@ def run():
                     else:
                         dealer = Dealer(health[turn[0]]) # 初始化Dealer类
                         player = Player(health[turn[0]],name) # 初始化Player类
+                        dealer.noprop()
                 if not buckshot:
-                    turn[1] += 1
                     buckshot = buckshots[turn[0]][turn[1]]
+                    turn[1] += 1
                     if turn[0]:
-                        propdealer.extend(makeprop(dealer,health[turn[0] - 1]))
+                        tmppropdealer = makeprop(dealer,health[turn[0] - 1])
+                        propdealer.extend(tmppropdealer)
                         dealer.noprop(False)
                         while True:
                             if len(propdealer) > 8:
@@ -226,8 +226,6 @@ def run():
                                 continue
                             break
                         tmppropplayer = makeprop(player,health[turn[0] - 1])
-                        if turn[0] == 2:
-                            breakpoint()
                     if not naming:
                         playerturn = dealerturn = False
                         drawingbullets = True
@@ -641,3 +639,5 @@ def dev():
     def license():print(licensetxt)
     while True:
         exec(input("(roulette)>>> "))
+
+run()

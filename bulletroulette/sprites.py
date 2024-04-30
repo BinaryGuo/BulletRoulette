@@ -1,6 +1,6 @@
 # 此文件用于声明类
 import pygame
-from bulletroulette.data import *
+from data import *
 from random import random
 
 class Button:
