@@ -10,6 +10,8 @@ from copy import copy
 from os import chdir
 from os.path import dirname
 from sys import path
+import treading
+treading.Tread() # TODO
 path.append(dirname(__file__))
 # 模块导入
 from data import *
@@ -445,7 +447,7 @@ def run():
                             first = True
                         drawingbullets = False
                         playerturn = True
-                        #shuffle(buckshot) #TODO
+                        shuffle(buckshot)
                         dealer.setbullet(buckshot)
                 else:
                     raise TypeError("Nothing is Running!!!")
