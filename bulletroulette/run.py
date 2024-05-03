@@ -627,7 +627,7 @@ def run():
     except KeyboardInterrupt:print(_("\n检测到^C"))
     except SystemExit:pass
     except:
-        print("抱歉，我们检测到了一个错误，这可能不是您造成的，但您无法继续进行游戏了")
+        print("抱歉，我们检测到了一个错误，您无法继续进行游戏了")
         print("错误信息：")
         print_exc()
     print("游戏结束!")
