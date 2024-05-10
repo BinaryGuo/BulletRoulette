@@ -32,7 +32,7 @@ def printprop(prop):
             print(_("放大镜"))
 
 # 以下是主程序
-def run():
+def run(CHEAT = False):
     try:
         playerknife = False
         dealerknife = False
@@ -52,6 +52,7 @@ def run():
                 for k in buckshot: # 空弹
                     if k == 0:buckshotcount[1]+=1
                 shuffle(buckshot) # 打乱子弹顺序
+                dealer.setbullet(buckshot)
                 print(_(f"{buckshotcount[0]}发实弹,{buckshotcount[1]}发空弹")) # 打印子弹提示
                 if j:
                     for k in range(HEALTH[j-1]):
@@ -89,12 +90,14 @@ def run():
                 playercuff = False
                 dealercuff = False
                 for b in buckshot:
+                    if CHEAT:
+                        print("Bullets:",buckshot)
                     print(f"恶魔血量：{dealer.gethealth()} {name}的血量：{player.gethealth()}")
                     if next == 0:
                         if j:
                             while True:
                                 useprop = player.useprop()
-                                if useprop == 0:
+                                if useprop == 0: # TODO
                                     break
                                 elif useprop == 1: # 啤酒
                                     print(_("正在使用：啤酒"))
@@ -122,7 +125,7 @@ def run():
                             if ctnl:
                                 ctnl = False
                                 continue
-                        if player.shoot():
+                        if player.shoot(): # 想射#TODO
                             if b:
                                 print(_("砰！！！"))
                                 dealer.hurt() # 受伤
@@ -204,8 +207,12 @@ def run():
                     playerknife = False
                     sleep(1)
                     if dealer.gethealth() == 0:
+                        print("恶魔死了！！！")
                         brk = True
                         break
+                    if player.gethealth() == 0:
+                        print(f"{name}死了！！！")
+                        raise SystemExit
             del dealer
             del player
     except KeyboardInterrupt:pass

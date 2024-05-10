@@ -39,7 +39,7 @@ def makeprop(beset,value):
             prp = setprop(beset,"magnifier",prp)
     return prp
 
-def run(FPS = 15):
+def run(FPS = 15,CHEAT = False):
     try:
         pygame.init()
         # 以下是一些关于pygame的一些常量声明
@@ -121,7 +121,7 @@ def run(FPS = 15):
         dealerturntextlocation.topright = (1400,0)
         buttons = []
         name = ""
-        for i in range(26):buttons.append(Button(50*(i+1),700,pygame.image.load(LETTERS[i])))
+        for i in range(26):buttons.append(Button(50*(i+1),700,pygame.image.load(LETTERSPATH[i])))
         delete = Button(350,760,pygame.image.load(DELETE))
         enter = Button(800,760,pygame.image.load(ENTER))
         pygame.mixer.music.play(-1) # 循环播放音乐
@@ -144,17 +144,22 @@ def run(FPS = 15):
         turn = [0,0] # 记录回合[大轮，小轮]
         dealer = Dealer(2) # 初始化Dealer类
         player = Player(2,name) # 初始化Player类
+        count = 0
         while True: # 游戏主循环
+            count += 1
+            if CHEAT and count == FPS:
+                count = 0
+                print("Bullets:",buckshot)
             for event in pygame.event.get(): # 事件处理循环
                 if event.type == pygame.QUIT: # QUIT处理
                     raise SystemExit # 退出(等同于exit())
             screen.blit(background,(0,0)) # 粘贴背景图片
-            if not player.gethealth(): # 玩家死亡
+            if player.gethealth() <= 0: # 玩家死亡
                 screen.blit(playerlose,loseorwinlocation) # 打印玩家死亡提示
                 pygame.display.update() # 更新画面
                 sleep(2) # 停留2秒
                 raise SystemExit # 退出
-            if not dealer.gethealth(): # 恶魔死亡
+            if dealer.gethealth() <= 0: # 恶魔死亡
                 turn[1] = 0 # 初始化小轮
                 turn[0] += 1 # 大轮+1
                 propplayer = [None,None,None,None,None,None,None,None]
@@ -253,6 +258,7 @@ def run(FPS = 15):
                 pygame.display.update()
                 sleep(1)
                 while True:
+                    if not dealer.getprop():break
                     useprop = dealer.useprop()
                     if useprop == 0:
                         break
@@ -296,33 +302,36 @@ def run(FPS = 15):
                         if i:screen.blit(eval(i),proplocation[en])
                     pygame.display.update()
                     sleep(1)
-                if dealer.shoot() == 0:
-                    screen.blit(shootself,shootlocation)
-                    if buckshot[0]:
-                        livedealermusic.play()
-                        dealer.hurt()
+                if buckshot:
+                    if dealer.shoot() == 0:
+                        screen.blit(shootself,shootlocation)
+                        if buckshot[0]:
+                            livedealermusic.play()
+                            dealer.hurt()
+                            if not playercuff:
+                                dealerturn = False
+                                playerturn = True
+                            else:playercuff = False
+                        else:
+                            blankmusic.play()
+                    else:
+                        screen.blit(shootplayer,shootlocation)
+                        if buckshot[0]:
+                            liveplayermusic.play()
+                            if dealerknife:
+                                player.hurt()
+                            player.hurt()
+                        else:
+                            blankmusic.play()
                         if not playercuff:
                             dealerturn = False
                             playerturn = True
-                        else:playercuff = False
-                    else:
-                        blankmusic.play()
-                else:
-                    screen.blit(shootplayer,shootlocation)
-                    if buckshot[0]:
-                        liveplayermusic.play()
-                        if dealerknife:
-                            player.hurt()
-                        player.hurt()
-                    else:
-                        blankmusic.play()
-                    if not playercuff:
-                        dealerturn = False
-                        playerturn = True
-                    else: playercuff = False
-                del buckshot[0]
-                pygame.display.update()
-                sleep(2)
+                        else: playercuff = False
+                    print("deling",buckshot)
+                    del buckshot[0]
+                    pygame.display.update()
+                    sleep(2)
+                else:pass
             elif choosing:
                 for i in range(player.gethealth()):
                     chargelocation.bottomleft = (0,850-50*i)
@@ -398,8 +407,8 @@ def run(FPS = 15):
                         first = True
                     drawingbullets = False
                     playerturn = True
-                    #shuffle(buckshot)
-                    dealer.setbullet(buckshot)
+                    shuffle(buckshot)
+                    dealer.setbullet(copy(buckshot))
  #           else:
 #                raise TypeError("Nothing is Running!!!")
             pygame.display.update()

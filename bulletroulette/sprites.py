@@ -52,16 +52,13 @@ class Dealer: # 恶魔
     def shoot(self) -> int: # 开枪
         if len(self.__bullet) == 1:return self.__bullet[0]
         del self.__bullet[0]
-        print("shoot value",self.__value)
         if self.__value != None:
             self.__value = None
-            print("using value")
             return self.__value
         if random() >= 0.5:return 1 # 1：向玩家开枪，0：向自己开枪
         else:return 0
 
     def noprop(self,rm = True) -> None:
-        print("before noprop",self.__prop)
         if rm:
             self.__prop = []
         else:
@@ -70,7 +67,6 @@ class Dealer: # 恶魔
                     self.__prop.pop()
                     continue
                 break
-        print("noproped",self.__prop)
 
     def useprop(self) -> int: # 使用道具
         '''
@@ -81,7 +77,6 @@ class Dealer: # 恶魔
             0：不用）
         ）
         '''
-        print("class prop",self.__prop)
         if not self.__prop:
             return 0
         while True:
@@ -111,7 +106,6 @@ class Dealer: # 恶魔
 
     def memory(self,value):
         self.__value = value
-        print("value",value)
 
     def setbullet(self,bullet):
         self.__bullet = bullet
@@ -119,8 +113,6 @@ class Dealer: # 恶魔
     def hurt(self):
         self.__health -= 1
         print("恶魔:啊！！！")
-        if self.__health == 0:
-            print("恶魔死了！！！")
 
 class Player: # 人（玩家）
     def __init__(self,health,name,prop = []) -> None: # 初始化（设置血量）
@@ -144,7 +136,7 @@ class Player: # 人（玩家）
 
     def useprop(self): # 抽取道具
         while True:
-            using = int(input(f"使用道具："))
+            using = input(f"使用道具：")
             if using in self.__prop:
                 del self.__prop[self.__prop.index(using)]
                 return using
@@ -159,9 +151,6 @@ class Player: # 人（玩家）
     def hurt(self) -> int: # 受伤
         self.__health -= 1
         print(f"{self.__name}：啊！！！")
-        if self.__health == 0:
-            print(f"{self.__name}死了！！！")
-            raise SystemExit
 
     def setname(self,name):
         self.__name = name

@@ -6,7 +6,7 @@ setup(
     version="1.1.1",  # 当前版本
     author="GQX",  # 作者
     author_email="kill114514251@outlook.com",  # 作者邮箱
-    description="Imitate game \"Buskshot Roulette\"",  # 模块简介
+    description="Imitate game \"Buckshot Roulette\"",  # 模块简介
     long_description=long_description,  # 模块详细介绍
     long_description_content_type="text/markdown",  # 模块详细介绍格式
     url="https://github.com/BinaryGuo/Bullet_Roulette",  # 模块github地址

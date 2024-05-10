@@ -1,10 +1,14 @@
 # Bullet Roulette 说明
 
+## 特别说明
+- 此版本的CLI(shell)有问题，无法正常游玩，望周知！
+- 但在bulletroulette文件夹下的CLIold可以玩到以前版本(1.0.6)的CLI，安装了此版本的玩家不必降级！
+
 ## 项目名称
 - Bullet Roulette
 
 ## 项目信息
-- 此项目旨在将游戏“恶魔轮盘”的玩法移植到Python3.x上
+- 此项目旨在将游戏“恶魔轮盘”的玩法移植到Python3上
 - github：https://github.com/BinaryGuo/Bullet_Roulette/
 - 问题反馈：https://github.com/BinaryGuo/Bullet_Roulette/issues/
 - 联系邮箱（GQX）：kill114514251@outlook.com
@@ -29,6 +33,7 @@
 ### 1.1（此版本）
 - 增加道具
 - 增加开发者模式
+- 新增英文版(1.1.1没有)(计划中)
 
 ### 1.2（计划）
 - 增加开场
@@ -49,57 +54,74 @@
 - METHOD1 打出子弹时显示子弹类型
 
 ## 项目说明
-- 你可以看到在每个.py文件开头简短的说明
+
 ### 安装方法
-在shell(Terminal(Mac/Linux)或cmd(Windows))
+在shell中输入：
 > python3 -m pip install bulletroulette
 
 或（前者更为保险）
 > pip3 install bulletroulette
 
 ### 运行方法
-启动IDLE(shell输入python)
-> \>>> from bulletroulette.run import run  
+启动IDLE
+- 图形界面(GUI)：
+> \>>> from bulletroulette.runGUI import run  
+> \>>> run(CHEAT = True) # 作弊(显示子弹顺序)  
+> \>>> run() # 正常游玩(FPS=15)  
+> \>>> run(FPS = n) # n为正数(int或float)  
+- shell界面(CLI旧版)：
+> \>>> from bulletroulette.CLIold import run
+> \>>> run(CHEAT = True) # 作弊(显示子弹顺序)  
+> \>>> run() # 正常游玩  
+- shell界面(CLI新版)(一堆BUG，建议玩旧版)：
+> \>>> from bulletroulette.runCLI import run
+> \>>> run(CHEAT = True) # 作弊(显示子弹顺序)  
+> \>>> run() # 正常游玩  
+- 开发者界面(其实就是README和LICENSE)：
+> \>>> from bulletroulette.dev import run
 > \>>> run()
-
-(终止时需在shell上按下^C ^D)
+> (roulette)>>> license()  # 协议
+> (roulette)>>> readme()  # README
+> (roulette)>>> exit()  # 退出
 
 ### 目录结构（在bulletroulette下）
 ```
 /
-    __init__.py  
-    run.py  
-    data.py  
-    roles.py  
-    sprites.py  
+    __init__.py
+    CLIold.py
+    data.py
+    dev.py
+    runCLI.py
+    runGUI.py
+    sprites.py
+    locale/
+        en/
+            LC_MESSAGES/
+                trans.po
+                trans.mo
+        ja/
+            LC_MESSAGES/
+                trans.po
     assets/
-        A.png  
+        A.png
         B.png
-        C.png  
-        .  
-        .  
-        .  
-        X.png  
-        Y.png  
-        Z.png  
-        bgmsc.ogg  
-        blank.wav  
-        .  
-        .  
-        .  
+        C.png
+        bgmsc.ogg
+        blank.wav
+        .
+        .
+        .
         (素材若干)
 ```
 
 ### 使用方法（游戏规则）
-- 在运行程序后，程序会让您指定游戏模式，建议选择窗口（如果是开发人员请忽略此建议）。
 
 #### 窗口模式
-1. 在选择窗口模式后，会让您设置帧率（建议设置为25以下，见BUG1）。
-2. 设置好帧率后会弹出一个窗口，让您输入名称（鼠标）
-3. 设置好名称后正式进入游戏，游戏分为三轮，每轮结束后会弹出 <您的名字> WIN!（在您赢的情况下）（第三轮结束后需手动终止（shell按下^C ^D），见BUG4），每一轮有若干发子弹，显示一次子弹为一小轮
-4. 每一轮会先显示子弹（红色为实弹，灰色为空弹），显示后子弹顺序会被打乱
-5. 每一小轮都是玩家先手，用鼠标选择枪后可点击DEALER射击对面，点击自己名字射击自己（左边为您和对面的血量）
-6. 如果您选择射击对面，不管是空弹还是实弹，下一回合都是对面开枪。如果您选择射击自己，如果是实弹下一回合就该对面开枪，如果是空弹，下一回合还是您射击。（如果是实弹会听到“砰！”，如果是空弹会听到“咔...”）
+1. 运行GUI后会弹出一个窗口，让您输入名称（鼠标）
+2. 设置好名称后正式进入游戏，游戏分为三轮，每轮结束后会弹出 <您的名字> WIN!（在您赢的情况下），每一轮有若干发子弹，显示一次子弹为一小轮
+3. 每一轮会先显示子弹（红色为实弹，灰色为空弹），显示后子弹顺序会被打乱
+4. 每一小轮都是玩家先手，用鼠标选择枪后可点击DEALER射击对面，点击自己名字射击自己（左边为您和对面的血量）
+5. 如果您选择射击对面，不管是空弹还是实弹，下一回合都是对面开枪。如果您选择射击自己，如果是实弹下一回合就该对面开枪，如果是空弹，下一回合还是您射击。（如果是实弹会听到“砰！”，如果是空弹会听到“咔...”）
 
 #### 壳程序模式
 1. 在选择壳程序模式后，会提示您输入名称
@@ -123,8 +145,8 @@
 
 ### 测试人员
 
-- 言邵阳（真名）
-- 陈晨（真名）
+- 言邵阳（真名）  
+- 陈晨（真名）  
 
 ## 格式规范
-- GQXstd-readme 1.0
+- GQXstd-readme 1.0 Independent

@@ -61,5 +61,4 @@ BULLETS = [ # 子弹（1代表实，0代表空）
             [1,1,0,0,0,0,0,0]
         ]
     ]
-LETTERS = [ASSESTS + l + ".png" for l in LETTERS]
-print(LETTERS)
+LETTERSPATH = [ASSESTS + l + ".png" for l in LETTERS]
