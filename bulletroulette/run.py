@@ -39,11 +39,10 @@ def makeprop(beset,value):
             prp = setprop(beset,"magnifier",prp)
     return prp
 
-def run(FPS = 15,CHEAT = False):
+def run(FPS = 15,CHEAT = False,MULTIPLAYER = False):
     try:
         pygame.init()
         # 以下是一些关于pygame的一些常量声明
-        # 以下是初始化
         clock = pygame.time.Clock() # 初始化时钟
         screen = pygame.display.set_mode((1400,850)) # 屏幕（窗口）初始化
         pygame.display.set_caption("Bullet Roulette") # 设置标题
@@ -126,6 +125,7 @@ def run(FPS = 15,CHEAT = False):
         enter = Button(800,760,pygame.image.load(ENTER))
         pygame.mixer.music.play(-1) # 循环播放音乐
         # 以下是一些控制变量
+        player = 0
         first = True
         naming = True # 正在命名
         playerturn = False # 玩家回合
@@ -143,7 +143,8 @@ def run(FPS = 15,CHEAT = False):
         buckshot = [] # 当前小轮的子弹
         turn = [0,0] # 记录回合[大轮，小轮]
         dealer = Dealer(2) # 初始化Dealer类
-        player = Player(2,name) # 初始化Player类
+        player = Player(2) # 初始化Player类
+        player2 = Player(2)
         count = 0
         while True: # 游戏主循环
             count += 1
@@ -413,6 +414,14 @@ def run(FPS = 15,CHEAT = False):
 #                raise TypeError("Nothing is Running!!!")
             pygame.display.update()
             clock.tick(FPS)
+    except KeyboardInterrupt:pass
+    except SystemExit:pass
+    pygame.quit()
+
+def twoplayer(FPS : int = 15,CHEAT : int = False):
+    try:
+        while True:
+            pass#if 
     except KeyboardInterrupt:pass
     except SystemExit:pass
     pygame.quit()

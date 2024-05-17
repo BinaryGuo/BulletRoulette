@@ -1,8 +1,8 @@
 from os.path import dirname
 
-with open(f"{dirname(__file__)}/../README.md", "r", encoding="utf-8") as fh:
+with open(f"{dirname(__file__)}/intros/README.md", "r", encoding="utf-8") as fh:
     readmetxt = fh.read()
-with open(f"{dirname(__file__)}/../LICENSE", "r", encoding="utf-8") as fh:
+with open(f"{dirname(__file__)}/intros/LICENSE", "r", encoding="utf-8") as fh:
     licensetxt = fh.read()
 
 def run():

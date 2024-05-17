@@ -1,10 +1,8 @@
 # Bullet Roulette 说明
 
 ## 特别说明
-
-从此版本开始将：
-- 停止对CLI界面的支持，但在以后的版本的CLIold.run函数中可以玩到1.1.2的CLI。
-- 停止对pygame2.4.0以下版本的支持。
+- 此版本的CLI(shell)有问题，无法正常游玩，望周知！
+- 但在bulletroulette文件夹下的CLIold可以玩到以前版本(1.0.6)的CLI，安装了此版本的玩家不必降级！
 
 ## 项目名称
 - Bullet Roulette
@@ -17,7 +15,7 @@
 - testPyPI：同名
 
 ## 版本
-- 1.1.2
+- 1.1.1
 
 ## 开发环境
 
@@ -35,14 +33,14 @@
 ### 1.1（此版本）
 - 增加道具
 - 增加开发者模式
-- 新增英文版
+- 新增英文版(1.1.1没有)(计划中)
 
 ### 1.2（计划）
-- 增加PVP
-
-### 1.3（计划）
 - 增加开场
 - 增加无尽模式
+
+### 1.3（计划）
+- 增加PVP
 
 ### 1.4（计划）
 - 增加远程连接
@@ -70,9 +68,13 @@
 > \>>> from bulletroulette.runGUI import run  
 > \>>> run(CHEAT = True) # 作弊(显示子弹顺序)  
 > \>>> run() # 正常游玩(FPS=15)  
-> \>>> run(FPS = n) # n为正整数  
-- shell界面(CLI旧版，不建议)：
+> \>>> run(FPS = n) # n为正数(int或float)  
+- shell界面(CLI旧版)：
 > \>>> from bulletroulette.CLIold import run
+> \>>> run(CHEAT = True) # 作弊(显示子弹顺序)  
+> \>>> run() # 正常游玩  
+- shell界面(CLI新版)(一堆BUG，建议玩旧版)：
+> \>>> from bulletroulette.runCLI import run
 > \>>> run(CHEAT = True) # 作弊(显示子弹顺序)  
 > \>>> run() # 正常游玩  
 - 开发者界面(其实就是README和LICENSE)：

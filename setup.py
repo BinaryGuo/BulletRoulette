@@ -12,12 +12,12 @@ setup(
     url="https://github.com/BinaryGuo/Bullet_Roulette",  # 模块github地址
     packages=find_packages(),  # 自动找到项目中导入的模块
     package_data={
-        "bulletroulette" : ["assets/*.png","assets/*.ogg","assets/*.ttf","assets/*.wav"]
+        "bulletroulette/" : ["assets/*","locale/*","intros/*"]
     },
     # 模块相关的元数据
     classifiers=[
         "Intended Audience :: End Users/Desktop",
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Topic :: Software Development :: Libraries :: pygame",
         "Natural Language :: Chinese (Simplified)",
         "License :: OSI Approved :: MIT License",
@@ -31,7 +31,7 @@ setup(
     ],
     # 依赖模块
     install_requires=[
-        "pygame>=2.0.1",
+        "pygame>=2.4.0",
     ],
     python_requires=">=3.8"
 )

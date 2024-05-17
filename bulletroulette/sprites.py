@@ -115,10 +115,9 @@ class Dealer: # 恶魔
         print("恶魔:啊！！！")
 
 class Player: # 人（玩家）
-    def __init__(self,health,name,prop = []) -> None: # 初始化（设置血量）
+    def __init__(self,health,prop = []) -> None: # 初始化（设置血量）
         self.__tophealth = health
         self.__health = health
-        self.__name = name
         self.__prop = prop
     
     def smoke(self) -> None:
@@ -126,7 +125,7 @@ class Player: # 人（玩家）
             self.__health += 1
 
     def shoot(self) -> int: # 打出
-        return int(input(f"{self.__name}想射："))
+        return int(input("你想射："))
 
     def gethealth(self) -> int:
         return self.__health
@@ -150,7 +149,7 @@ class Player: # 人（玩家）
 
     def hurt(self) -> int: # 受伤
         self.__health -= 1
-        print(f"{self.__name}：啊！！！")
+        print("你：啊！！！")
 
     def setname(self,name):
         self.__name = name
