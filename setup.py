@@ -31,7 +31,7 @@ setup(
     ],
     # 依赖模块
     install_requires=[
-        "pygame>=2.4.0",
+        "pygame>=2.5.0",
     ],
     python_requires=">=3.8"
 )
