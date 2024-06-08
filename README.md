@@ -7,7 +7,7 @@
 - 停止对pygame2.5.0以下版本的支持。
 
 ## 项目名称
-- Bullet Roulette
+- Bullet_Roulette
 
 ## 项目信息
 - 此项目旨在将游戏“恶魔轮盘”的玩法移植到Python3上
@@ -20,11 +20,12 @@
 - 1.1.2
 
 ## 开发环境
-
-### 操作系统
-- Ubuntu linux 22.04
-- Python 3.10.12
+- Ubuntu Linux 24.04
+- Python 3.12.3
 - Pygame 2.5.2
+
+## 使用语言
+- Python
 
 ## 改动说明
 
