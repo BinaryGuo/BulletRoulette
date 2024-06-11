@@ -5,8 +5,9 @@ with open(f"{dirname(__file__)}/intros/README.md", "r", encoding="utf-8") as fh:
 with open(f"{dirname(__file__)}/intros/LICENSE", "r", encoding="utf-8") as fh:
     licensetxt = fh.read()
 
+def readme():print(readmetxt)
+def license():print(licensetxt)
+
 def run():
-    def readme():print(readmetxt)
-    def license():print(licensetxt)
     while True:
-        exec(input("(roulette)>>> "))
+        exec(input("(roulette)>>> ") + "()")
