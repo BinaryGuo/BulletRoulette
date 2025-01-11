@@ -6,175 +6,97 @@ Normal
 # 您的分支与上游分支 'origin/main' 一致。
 #
 # 要提交的变更：
-#	修改：     .ipynb_checkpoints/README-checkpoint.md
-#	修改：     LICENSE
-#	删除：     MANIFEST.in
+#	新文件：   .gitignore
+#	删除：     .ipynb_checkpoints/README-checkpoint.md
 #	修改：     README.md
-#	新文件：   build/lib/bulletroulette/CLIold.py
+#	修改：     build/lib/bulletroulette/CLIold.py
 #	修改：     build/lib/bulletroulette/__init__.py
-#	修改：     build/lib/bulletroulette/assets/A.png
-#	修改：     build/lib/bulletroulette/assets/B.png
-#	修改：     build/lib/bulletroulette/assets/C.png
-#	修改：     build/lib/bulletroulette/assets/D.png
-#	修改：     build/lib/bulletroulette/assets/DELETE.png
-#	修改：     build/lib/bulletroulette/assets/E.png
-#	修改：     build/lib/bulletroulette/assets/ENTER.png
-#	修改：     build/lib/bulletroulette/assets/F.png
-#	修改：     build/lib/bulletroulette/assets/G.png
-#	修改：     build/lib/bulletroulette/assets/H.png
-#	修改：     build/lib/bulletroulette/assets/I.png
-#	修改：     build/lib/bulletroulette/assets/J.png
-#	修改：     build/lib/bulletroulette/assets/K.png
-#	修改：     build/lib/bulletroulette/assets/L.png
-#	修改：     build/lib/bulletroulette/assets/M.png
-#	修改：     build/lib/bulletroulette/assets/N.png
-#	修改：     build/lib/bulletroulette/assets/O.png
-#	修改：     build/lib/bulletroulette/assets/P.png
-#	修改：     build/lib/bulletroulette/assets/Q.png
-#	修改：     build/lib/bulletroulette/assets/R.png
-#	修改：     build/lib/bulletroulette/assets/S.png
-#	修改：     build/lib/bulletroulette/assets/T.png
-#	新文件：   build/lib/bulletroulette/assets/TV.png
-#	新文件：   build/lib/bulletroulette/assets/TVvolta.png
-#	修改：     build/lib/bulletroulette/assets/U.png
-#	修改：     build/lib/bulletroulette/assets/V.png
-#	修改：     build/lib/bulletroulette/assets/W.png
-#	修改：     build/lib/bulletroulette/assets/X.png
-#	修改：     build/lib/bulletroulette/assets/Y.png
-#	修改：     build/lib/bulletroulette/assets/Z.png
-#	修改：     build/lib/bulletroulette/assets/__init__.py
-#	修改：     build/lib/bulletroulette/assets/beer.png
-#	修改：     build/lib/bulletroulette/assets/binary.png
-#	修改：     build/lib/bulletroulette/assets/blank.png
-#	新文件：   build/lib/bulletroulette/assets/boom.png
-#	修改：     build/lib/bulletroulette/assets/dealershootplayer.png
-#	修改：     build/lib/bulletroulette/assets/dealershootself.png
-#	新文件：   build/lib/bulletroulette/assets/dusebeer.png
-#	新文件：   build/lib/bulletroulette/assets/dusehandcuff.png
-#	新文件：   build/lib/bulletroulette/assets/duseknife.png
-#	新文件：   build/lib/bulletroulette/assets/dusemagnifier.png
-#	新文件：   build/lib/bulletroulette/assets/dusesmoke.png
-#	修改：     build/lib/bulletroulette/assets/gun.png
-#	修改：     build/lib/bulletroulette/assets/handcuff.png
-#	修改：     build/lib/bulletroulette/assets/knife.png
-#	修改：     build/lib/bulletroulette/assets/liveround.png
-#	修改：     build/lib/bulletroulette/assets/magnifier.png
-#	修改：     build/lib/bulletroulette/assets/noneprop.png
-#	修改：     build/lib/bulletroulette/assets/pill.png
-#	新文件：   build/lib/bulletroulette/assets/pin.png
-#	修改：     build/lib/bulletroulette/assets/propbox.png
-#	新文件：   build/lib/bulletroulette/assets/seeblank.png
-#	新文件：   build/lib/bulletroulette/assets/seeliveround.png
-#	修改：     build/lib/bulletroulette/assets/smoke.png
-#	修改：     build/lib/bulletroulette/assets/super.png
-#	新文件：   build/lib/bulletroulette/assets/turn.png
-#	新文件：   build/lib/bulletroulette/assets/usebeer.png
-#	新文件：   build/lib/bulletroulette/assets/usehandcuff.png
-#	新文件：   build/lib/bulletroulette/assets/useknife.png
-#	新文件：   build/lib/bulletroulette/assets/usemagnifier.png
-#	新文件：   build/lib/bulletroulette/assets/usesmoke.png
 #	修改：     build/lib/bulletroulette/data.py
-#	新文件：   build/lib/bulletroulette/dev.py
-#	修改：     build/lib/bulletroulette/roles.py
-#	修改：     build/lib/bulletroulette/run.py
-#	新文件：   build/lib/bulletroulette/runCLI.py
-#	新文件：   build/lib/bulletroulette/runGUI.py
+#	修改：     build/lib/bulletroulette/dev.py
+#	修改：     build/lib/bulletroulette/runCLI.py
+#	修改：     build/lib/bulletroulette/runGUI.py
 #	修改：     build/lib/bulletroulette/sprites.py
 #	修改：     bulletroulette.egg-info/PKG-INFO
-#	修改：     bulletroulette.egg-info/SOURCES.txt
-#	修改：     bulletroulette.egg-info/dependency_links.txt
-#	修改：     bulletroulette.egg-info/requires.txt
-#	修改：     bulletroulette.egg-info/top_level.txt
-#	新文件：   bulletroulette/CLIold.py
 #	修改：     bulletroulette/__init__.py
-#	修改：     bulletroulette/__pycache__/__init__.cpython-310.pyc
-#	删除：     bulletroulette/__pycache__/__init__.cpython-311.pyc
+#	删除：     bulletroulette/__pycache__/__init__.cpython-310.pyc
 #	修改：     bulletroulette/__pycache__/data.cpython-310.pyc
-#	删除：     bulletroulette/__pycache__/data.cpython-311.pyc
-#	新文件：   bulletroulette/__pycache__/dev.cpython-310.pyc
-#	删除：     bulletroulette/__pycache__/roles.cpython-310.pyc
-#	删除：     bulletroulette/__pycache__/roles.cpython-311.pyc
-#	修改：     bulletroulette/__pycache__/run.cpython-310.pyc
-#	删除：     bulletroulette/__pycache__/run.cpython-311.pyc
-#	新文件：   bulletroulette/__pycache__/runGUI.cpython-310.pyc
+#	删除：     bulletroulette/__pycache__/dev.cpython-310.pyc
+#	删除：     bulletroulette/__pycache__/run.cpython-310.pyc
+#	删除：     bulletroulette/__pycache__/runGUI.cpython-310.pyc
 #	修改：     bulletroulette/__pycache__/sprites.cpython-310.pyc
-#	删除：     bulletroulette/__pycache__/sprites.cpython-311.pyc
-#	修改：     bulletroulette/assets/A.png
-#	修改：     bulletroulette/assets/B.png
-#	修改：     bulletroulette/assets/C.png
-#	修改：     bulletroulette/assets/D.png
-#	修改：     bulletroulette/assets/DELETE.png
-#	修改：     bulletroulette/assets/E.png
-#	修改：     bulletroulette/assets/ENTER.png
-#	修改：     bulletroulette/assets/F.png
-#	修改：     bulletroulette/assets/G.png
-#	修改：     bulletroulette/assets/H.png
-#	修改：     bulletroulette/assets/I.png
-#	修改：     bulletroulette/assets/J.png
-#	修改：     bulletroulette/assets/K.png
-#	修改：     bulletroulette/assets/L.png
-#	修改：     bulletroulette/assets/M.png
-#	修改：     bulletroulette/assets/N.png
-#	修改：     bulletroulette/assets/O.png
-#	修改：     bulletroulette/assets/P.png
-#	修改：     bulletroulette/assets/Q.png
-#	修改：     bulletroulette/assets/R.png
-#	修改：     bulletroulette/assets/S.png
-#	修改：     bulletroulette/assets/T.png
-#	新文件：   bulletroulette/assets/TV.png
-#	新文件：   bulletroulette/assets/TVvolta.png
-#	修改：     bulletroulette/assets/U.png
-#	修改：     bulletroulette/assets/V.png
-#	修改：     bulletroulette/assets/W.png
-#	修改：     bulletroulette/assets/X.png
-#	修改：     bulletroulette/assets/Y.png
-#	修改：     bulletroulette/assets/Z.png
-#	修改：     bulletroulette/assets/beer.png
-#	修改：     bulletroulette/assets/blank.png
-#	修改：     bulletroulette/assets/boom.png
-#	修改：     bulletroulette/assets/dealershootplayer.png
-#	修改：     bulletroulette/assets/dealershootself.png
-#	修改：     bulletroulette/assets/dusebeer.png
-#	修改：     bulletroulette/assets/dusehandcuff.png
-#	修改：     bulletroulette/assets/duseknife.png
-#	修改：     bulletroulette/assets/dusemagnifier.png
-#	修改：     bulletroulette/assets/dusesmoke.png
-#	修改：     bulletroulette/assets/gun.png
-#	修改：     bulletroulette/assets/handcuff.png
-#	修改：     bulletroulette/assets/knife.png
-#	修改：     bulletroulette/assets/liveround.png
-#	修改：     bulletroulette/assets/magnifier.png
-#	修改：     bulletroulette/assets/noneprop.png
-#	修改：     bulletroulette/assets/pill.png
-#	新文件：   bulletroulette/assets/pin.png
-#	修改：     bulletroulette/assets/propbox.png
-#	删除：     bulletroulette/assets/resize.py
-#	修改：     bulletroulette/assets/seeblank.png
-#	修改：     bulletroulette/assets/seeliveround.png
-#	修改：     bulletroulette/assets/smoke.png
-#	修改：     bulletroulette/assets/super.png
-#	新文件：   bulletroulette/assets/turn.png
-#	修改：     bulletroulette/assets/usebeer.png
-#	修改：     bulletroulette/assets/usehandcuff.png
-#	修改：     bulletroulette/assets/useknife.png
-#	修改：     bulletroulette/assets/usemagnifier.png
-#	修改：     bulletroulette/assets/usesmoke.png
+#	重命名：   bulletroulette/assets/A.png -> bulletroulette/asset/A.png
+#	重命名：   bulletroulette/assets/B.png -> bulletroulette/asset/B.png
+#	重命名：   bulletroulette/assets/C.png -> bulletroulette/asset/C.png
+#	重命名：   bulletroulette/assets/D.png -> bulletroulette/asset/D.png
+#	重命名：   bulletroulette/assets/DELETE.png -> bulletroulette/asset/DELETE.png
+#	重命名：   bulletroulette/assets/E.png -> bulletroulette/asset/E.png
+#	重命名：   bulletroulette/assets/ENTER.png -> bulletroulette/asset/ENTER.png
+#	重命名：   bulletroulette/assets/F.png -> bulletroulette/asset/F.png
+#	重命名：   bulletroulette/assets/G.png -> bulletroulette/asset/G.png
+#	重命名：   bulletroulette/assets/H.png -> bulletroulette/asset/H.png
+#	重命名：   bulletroulette/assets/I.png -> bulletroulette/asset/I.png
+#	重命名：   bulletroulette/assets/J.png -> bulletroulette/asset/J.png
+#	重命名：   bulletroulette/assets/K.png -> bulletroulette/asset/K.png
+#	重命名：   bulletroulette/assets/L.png -> bulletroulette/asset/L.png
+#	重命名：   bulletroulette/assets/M.png -> bulletroulette/asset/M.png
+#	重命名：   bulletroulette/assets/N.png -> bulletroulette/asset/N.png
+#	重命名：   bulletroulette/assets/O.png -> bulletroulette/asset/O.png
+#	重命名：   bulletroulette/assets/P.png -> bulletroulette/asset/P.png
+#	重命名：   bulletroulette/assets/Q.png -> bulletroulette/asset/Q.png
+#	重命名：   bulletroulette/assets/R.png -> bulletroulette/asset/R.png
+#	重命名：   bulletroulette/assets/S.png -> bulletroulette/asset/S.png
+#	重命名：   bulletroulette/assets/Simhei.ttf -> bulletroulette/asset/Simhei.ttf
+#	重命名：   bulletroulette/assets/T.png -> bulletroulette/asset/T.png
+#	重命名：   bulletroulette/assets/TV.png -> bulletroulette/asset/TV.png
+#	重命名：   bulletroulette/assets/TVvolta.png -> bulletroulette/asset/TVvolta.png
+#	重命名：   bulletroulette/assets/U.png -> bulletroulette/asset/U.png
+#	重命名：   bulletroulette/assets/V.png -> bulletroulette/asset/V.png
+#	重命名：   bulletroulette/assets/W.png -> bulletroulette/asset/W.png
+#	重命名：   bulletroulette/assets/X.png -> bulletroulette/asset/X.png
+#	重命名：   bulletroulette/assets/Y.png -> bulletroulette/asset/Y.png
+#	重命名：   bulletroulette/assets/Z.png -> bulletroulette/asset/Z.png
+#	重命名：   bulletroulette/assets/beer.png -> bulletroulette/asset/beer.png
+#	重命名：   bulletroulette/assets/bg.png -> bulletroulette/asset/bg.png
+#	重命名：   bulletroulette/assets/bgmsc.ogg -> bulletroulette/asset/bgm.ogg
+#	重命名：   bulletroulette/assets/blank.png -> bulletroulette/asset/blank.png
+#	重命名：   bulletroulette/assets/blank.wav -> bulletroulette/asset/blank.wav
+#	重命名：   bulletroulette/assets/boom.png -> bulletroulette/asset/boom.png
+#	重命名：   bulletroulette/assets/charge.png -> bulletroulette/asset/charge.png
+#	重命名：   bulletroulette/assets/dealershootplayer.png -> bulletroulette/asset/dealershootplayer.png
+#	重命名：   bulletroulette/assets/dealershootself.png -> bulletroulette/asset/dealershootself.png
+#	重命名：   bulletroulette/assets/dusebeer.png -> bulletroulette/asset/dusebeer.png
+#	重命名：   bulletroulette/assets/dusehandcuff.png -> bulletroulette/asset/dusehandcuff.png
+#	重命名：   bulletroulette/assets/duseknife.png -> bulletroulette/asset/duseknife.png
+#	重命名：   bulletroulette/assets/dusemagnifier.png -> bulletroulette/asset/dusemagnifier.png
+#	重命名：   bulletroulette/assets/dusesmoke.png -> bulletroulette/asset/dusesmoke.png
+#	重命名：   bulletroulette/assets/gun.png -> bulletroulette/asset/gun.png
+#	重命名：   bulletroulette/assets/handcuff.png -> bulletroulette/asset/handcuff.png
+#	重命名：   bulletroulette/assets/knife.png -> bulletroulette/asset/knife.png
+#	重命名：   bulletroulette/assets/livedealer.wav -> bulletroulette/asset/livedealer.wav
+#	重命名：   bulletroulette/assets/liveplayer.wav -> bulletroulette/asset/liveplayer.wav
+#	重命名：   bulletroulette/assets/liveround.png -> bulletroulette/asset/liveround.png
+#	重命名：   bulletroulette/assets/magnifier.png -> bulletroulette/asset/magnifier.png
+#	重命名：   bulletroulette/assets/noneprop.png -> bulletroulette/asset/noneprop.png
+#	重命名：   bulletroulette/assets/pill.png -> bulletroulette/asset/pill.png
+#	重命名：   bulletroulette/assets/pin.png -> bulletroulette/asset/pin.png
+#	重命名：   bulletroulette/assets/propbox.png -> bulletroulette/asset/propbox.png
+#	重命名：   bulletroulette/assets/seeblank.png -> bulletroulette/asset/seeblank.png
+#	重命名：   bulletroulette/assets/seeliveround.png -> bulletroulette/asset/seeliveround.png
+#	重命名：   bulletroulette/assets/smoke.png -> bulletroulette/asset/smoke.png
+#	重命名：   bulletroulette/assets/super.png -> bulletroulette/asset/super.png
+#	重命名：   bulletroulette/assets/turn.png -> bulletroulette/asset/turn.png
+#	重命名：   bulletroulette/assets/usebeer.png -> bulletroulette/asset/usebeer.png
+#	重命名：   bulletroulette/assets/usehandcuff.png -> bulletroulette/asset/usehandcuff.png
+#	重命名：   bulletroulette/assets/useknife.png -> bulletroulette/asset/useknife.png
+#	重命名：   bulletroulette/assets/usemagnifier.png -> bulletroulette/asset/usemagnifier.png
+#	重命名：   bulletroulette/assets/usesmoke.png -> bulletroulette/asset/usesmoke.png
 #	修改：     bulletroulette/data.py
-#	新文件：   bulletroulette/dev.py
-#	新文件：   bulletroulette/intros/LICENSE
-#	新文件：   bulletroulette/intros/README.md
-#	修改：     bulletroulette/locale/en/LC_MESSAGES/trans.mo
-#	修改：     bulletroulette/locale/en/LC_MESSAGES/trans.po
-#	修改：     bulletroulette/locale/ja/LC_MESSAGES/trans.po
-#	删除：     bulletroulette/roles.py
+#	修改：     bulletroulette/dev.py
 #	修改：     bulletroulette/run.py
-#	修改：     bulletroulette/sprites.py
-#	修改：     demos/demo.py
-#	删除：     dist/bulletroulette-1.0.3-py3-none-any.whl
-#	删除：     dist/bulletroulette-1.0.3.tar.gz
-#	删除：     dist/bulletroulette-1.0.4.tar.gz
-#	重命名：   dist/bulletroulette-1.0.4-py3-none-any.whl -> dist/bulletroulette-1.1.1-py3-none-any.whl
-#	新文件：   dist/bulletroulette-1.1.1.tar.gz
-#	新文件：   rain.py
+#	删除：     demos/demo.py
+#	修改：     dist/bulletroulette-1.1.1-py3-none-any.whl
+#	修改：     dist/bulletroulette-1.1.1.tar.gz
+#	新文件：   nohup.out
+#	删除：     rain.py
 #	修改：     setup.py
 #

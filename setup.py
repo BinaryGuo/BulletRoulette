@@ -19,6 +19,7 @@ setup(
         "Intended Audience :: End Users/Desktop",
         "Development Status :: 4 - Beta",
         "Topic :: Software Development :: Libraries :: pygame",
+        "Natural Language :: English",
         "Natural Language :: Chinese (Simplified)",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",

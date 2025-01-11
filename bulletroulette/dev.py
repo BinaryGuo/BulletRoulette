@@ -11,3 +11,5 @@ def license():print(licensetxt)
 def run():
     while True:
         exec(input("(roulette)>>> ") + "()")
+    
+run()

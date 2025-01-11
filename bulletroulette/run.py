@@ -67,11 +67,11 @@ def run(FPS = 15,CHEAT = False,MULTIPLAYER = False):
         useknife      = pygame.image.load(USEKNIFE) # 加载玩家使用刀时的图片
         seeblank      = pygame.image.load(SEEBLANK) # 加载玩家使用放大镜看到空弹时的图片
         seeliveround  = pygame.image.load(SEELIVEROUND) # 加载玩家使用放大镜看到实弹时的图片
-        dusesmoke     = pygame.image.load(DUSESMOKE) # 加载玩家使用烟时的图片
-        dusemagnifier = pygame.image.load(DUSEMAGNIFIER) # 加载玩家使用放大镜时的图片
-        dusehandcuff  = pygame.image.load(DUSEHANDCUFF) # 加载玩家使用手铐时的图片
-        dusebeer      = pygame.image.load(DUSEBEER) # 加载玩家使用啤酒时的图片
-        duseknife     = pygame.image.load(DUSEKNIFE) # 加载玩家使用刀时的图片
+        dusesmoke     = pygame.image.load(DUSESMOKE) # 加载恶魔使用烟时的图片
+        dusemagnifier = pygame.image.load(DUSEMAGNIFIER) # 加载恶魔使用放大镜时的图片
+        dusehandcuff  = pygame.image.load(DUSEHANDCUFF) # 加载恶魔使用手铐时的图片
+        dusebeer      = pygame.image.load(DUSEBEER) # 加载恶魔使用啤酒时的图片
+        duseknife     = pygame.image.load(DUSEKNIFE) # 加载恶魔使用刀时的图片
         nametext = text.render(_("输入名字："),True,WHITE) # 用字体生成文字
         playerlose = text.render(_("恶魔赢了！"),True,WHITE) # 用字体生成文字
         interestingtext = text.render(_("恶魔：非常有趣"),True,WHITE)
@@ -157,8 +157,9 @@ def run(FPS = 15,CHEAT = False,MULTIPLAYER = False):
             screen.blit(background,(0,0)) # 粘贴背景图片
             if player.gethealth() <= 0: # 玩家死亡
                 screen.blit(playerlose,loseorwinlocation) # 打印玩家死亡提示
-                pygame.display.update() # 更新画面
-                sleep(2) # 停留2秒
+                for i in range(20):
+                    pygame.display.update()
+                    sleep(0.1)
                 raise SystemExit # 退出
             if dealer.gethealth() <= 0: # 恶魔死亡
                 turn[1] = 0 # 初始化小轮
@@ -167,8 +168,9 @@ def run(FPS = 15,CHEAT = False,MULTIPLAYER = False):
                 propdealer = []
                 buckshot = [] # 初始化子弹
                 screen.blit(playerwin,loseorwinlocation) # 打印恶魔死亡提示
-                pygame.display.update() # 更新画面
-                sleep(2) # 停留2秒
+                for i in range(20):
+                    pygame.display.update()
+                    sleep(0.1)
                 if turn[0] == 3: # 超出3轮
                     raise SystemExit # 退出
                 else:
@@ -239,8 +241,9 @@ def run(FPS = 15,CHEAT = False,MULTIPLAYER = False):
                                 else:
                                     screen.blit(seeblank,seelocation)
                             propplayer[en] = None
-                            pygame.display.update()
-                            sleep(2)
+                            for i in range(20):
+                                pygame.display.update()
+                                sleep(0.1)
                 if gun.run(screen):
                     playerturn = False
                     choosing = True
@@ -256,8 +259,9 @@ def run(FPS = 15,CHEAT = False,MULTIPLAYER = False):
                     screen.blit(eval(i),dproplocation[en])
                 for en,i in enumerate(propplayer):
                     if i:screen.blit(eval(i),proplocation[en])
-                pygame.display.update()
-                sleep(1)
+                for i in range(20):
+                    pygame.display.update()
+                    sleep(0.1)
                 while True:
                     if not dealer.getprop():break
                     useprop = dealer.useprop()
@@ -287,8 +291,9 @@ def run(FPS = 15,CHEAT = False,MULTIPLAYER = False):
                             dealer.memory(0)
                         screen.blit(interestingtext,interestingtextlocation)
                     propdealer = dealer.getprop()
-                    pygame.display.update()
-                    sleep(2)
+                    for i in range(20):
+                        pygame.display.update()
+                        sleep(0.1)
                     screen.blit(background,(0,0))
                     screen.blit(dealerturntext,dealerturntextlocation)
                     for i in range(player.gethealth()):
@@ -301,8 +306,9 @@ def run(FPS = 15,CHEAT = False,MULTIPLAYER = False):
                         screen.blit(eval(i),dproplocation[en])
                     for en,i in enumerate(propplayer):
                         if i:screen.blit(eval(i),proplocation[en])
-                    pygame.display.update()
-                    sleep(1)
+                    for i in range(10):
+                        pygame.display.update()
+                        sleep(0.1)
                 if buckshot:
                     if dealer.shoot() == 0:
                         screen.blit(shootself,shootlocation)
@@ -330,8 +336,9 @@ def run(FPS = 15,CHEAT = False,MULTIPLAYER = False):
                         else: playercuff = False
                     print("deling",buckshot)
                     del buckshot[0]
-                    pygame.display.update()
-                    sleep(2)
+                    for i in range(20):
+                        pygame.display.update()
+                        sleep(0.1)
                 else:pass
             elif choosing:
                 for i in range(player.gethealth()):
@@ -356,7 +363,9 @@ def run(FPS = 15,CHEAT = False,MULTIPLAYER = False):
                             dealer.hurt()
                     del buckshot[0]
                     playerknife = False
-                    sleep(2)
+                    for i in range(20):
+                        pygame.display.update()
+                        sleep(0.1)
                 elif shootyou.run(screen):
                     choosing = False
                     if buckshot[0] == 0:
@@ -374,7 +383,9 @@ def run(FPS = 15,CHEAT = False,MULTIPLAYER = False):
                             dealerturn = True
                     del buckshot[0]
                     playerknife = False
-                    sleep(2)
+                    for i in range(20):
+                        pygame.display.update()
+                        sleep(0.1)
             elif drawingbullets:
                 pygame.draw.rect(screen,RED,(0,0,1400,250))
                 screen.blit(buckshottext,buckshottextlocation)
@@ -402,8 +413,9 @@ def run(FPS = 15,CHEAT = False,MULTIPLAYER = False):
                                 del tmppropplayer[0]
                 else:
                     if first:
-                        pygame.display.update()
-                        sleep(2)
+                        for i in range(20):
+                            pygame.display.update()
+                            sleep(0.1)
                     else:
                         first = True
                     drawingbullets = False
@@ -425,3 +437,5 @@ def twoplayer(FPS : int = 15,CHEAT : int = False):
     except KeyboardInterrupt:pass
     except SystemExit:pass
     pygame.quit()
+
+run()
